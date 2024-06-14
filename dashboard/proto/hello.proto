@@ -1,0 +1,19 @@
+// protoc --go_out=. hello.proto
+// protoc --go-grpc_out=. hello.proto
+
+// protoc --go_out=. --go-grpc_out=. hello.proto
+syntax = "proto3";  
+// generated go files in '.' current directory with 'service' package
+option go_package = ".;service";
+
+
+
+service SayHelloService {
+    rpc SayHello(SayHelloRequest) returns (stream SayHelloResponse){};
+}
+
+message SayHelloRequest {}
+
+message SayHelloResponse {
+    string response_msg = 1;
+}

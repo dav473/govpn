@@ -1,0 +1,23 @@
+[Interface]
+Address = 10.0.0.2/24
+ListenPort = 51820
+PrivateKey = wHSDVusL4lg15LhPjLPREgS9kJipneGlvQXONKKKYU4=
+
+
+[Peer]
+PublicKey = D9JndI4ftUm2OvBPKKlrQIb6xeh1Vv+M8oG8wRRrQz4=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 155.138.159.68:51820
+---------------------------------------------------------------------
+[Interface]
+Address = 10.0.0.3/24
+ListenPort = 55.138.159.68:51820
+PrivateKey = YO4ZmVlg4wKnybbx8Lkbg+kKwaxAmsHrOkkWsSxNaGA=
+PersistentKeepalive = 25   #当会话存在一端 IP 地址为 NAT 地址或虚假公网 IP 地址时，由该方阶段性每 25 秒发送 keepalive 报文保持会话的可用性，防止被设备终止。
+
+
+[Peer]
+PublicKey = D9JndI4ftUm2OvBPKKlrQIb6xeh1Vv+M8oG8wRRrQz4=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 155.138.159.68:51820
+PersistentKeepalive = 25   #当会话存在一端 IP 地址为 NAT 地址或虚假公网 IP 地址时，由该方阶段性每 25 秒发送 keepalive 报文保持会话的可用性，防止被设备终止。
