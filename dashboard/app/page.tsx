@@ -11,7 +11,7 @@ export default function Home() {
     'grpc.ssl_target_name_override' : 'localhost',
     'grpc.default_authority': 'localhost'
 }
-  const client = new SayHelloServiceClient("localhost:9090", ssl_creds, options);
+  const client = new SayHelloServiceClient("155.138.159.68:9090", ssl_creds, options);
   const req = new SayHelloRequest();
   const stream = client.sayHello(req);
   stream.on("data", ( response) => {

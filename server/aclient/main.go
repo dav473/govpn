@@ -26,7 +26,7 @@ func (c ClientToken) RequireTransportSecurity() bool {
 func main() {
 	path, _ := os.Getwd()
 	creds, _ := credentials.NewClientTLSFromFile(path+"/../aserver/keys/server/server.crt", "localhost")
-	conn, err := grpc.Dial("127.0.0.1:9090", grpc.WithTransportCredentials(creds))
+	conn, err := grpc.Dial("155.138.159.68:9090", grpc.WithTransportCredentials(creds))
 
 	//conn, err := grpc.Dial("127.0.0.1:9090", grpc.WithTransportCredentials(insecure.NewCredentials()))
 
@@ -39,13 +39,13 @@ func main() {
 	// conn, err := grpc.Dial("0.0.0.0:9090", options...)
 
 	if err != nil {
-		fmt.Printf("dddddddddddddddd")
+		fmt.Print(err.Error())
 	}
 	defer conn.Close()
 	client := pb.NewSayHelloServiceClient(conn)
 	stream, err := client.SayHello(context.Background(), &pb.SayHelloRequest{})
 	if err != nil {
-		fmt.Printf("dddddddddddddddd")
+		fmt.Print(err.Error())
 	}
 
 	stop := time.NewTicker(time.Second * 10)
@@ -55,7 +55,7 @@ stopLoop:
 		case <-stop.C:
 			err := stream.CloseSend()
 			if err != nil {
-				fmt.Printf("dddddddddddddddd")
+				fmt.Print(err.Error())
 			}
 			break stopLoop
 		default:
