@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	pb "govpn/server/aserver/proto"
 	"net"
 	"os"
 	"time"
+
+	pb "github.com/dav473/govpn/server/aserver/proto"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
