@@ -27,13 +27,14 @@ export async function GET(request: NextRequest) {
     'grpc.ssl_target_name_override' : 'localhost',
     'grpc.default_authority': 'localhost'
 }
-  const client = new SayHelloServiceClient("155.138.159.68:9090", ssl_creds, options);
+  const client = new SayHelloServiceClient("127.0.0.1:9090", ssl_creds, options);
   const req = new SayHelloRequest();
   const stream = client.sayHello(req);
 
   stream.on("data", ( response) => {
     const message = `data: ${response} \n\n`;
     const messageUint8Array = encoder.encode(message);
+    console.log("received: "+message)
      writer.write(messageUint8Array)
   });
 
