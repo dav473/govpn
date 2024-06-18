@@ -14,10 +14,9 @@
 
 -----------------------SERVER
 
-`openssl genkey -algorithm RSA -out ./server/server.key`
+
 `openssl genrsa -out ./server/server.key 2048`
 
-`openssl req -new -nodes -key ./server/server.key -out ./server/server.csr -days 3650 -config ./openssl.cnf -extensions v3_req`
 `openssl req -new -key ./server/server.key -out ./server/server.csr -config ./openssl.cnf -extensions v3_req`
 
 

@@ -51,7 +51,7 @@ func (s *Server) SayHello(req *pb.SayHelloRequest, stream pb.SayHelloService_Say
 func main() {
 	listen, _ := net.Listen("tcp", ":9090")
 	path, _ := os.Getwd()
-	creds, _ := credentials.NewServerTLSFromFile(path+"/keys/client/client.pem", path+"/keys/client/client.key")
+	creds, _ := credentials.NewServerTLSFromFile(path+"/keys/server/server.pem", path+"/keys/server/server.key")
 	grpcServer := grpc.NewServer(grpc.Creds(creds))
 	//grpcServer := grpc.NewServer(grpc.Creds(insecure.NewCredentials()))
 	pb.RegisterSayHelloServiceServer(grpcServer, &Server{})

@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
   response.headers.set("Connection", "keep-alive");
   response.headers.set("Transfer-Encoding", "chunked");
 
-  const root_cert = readFileSync(process.cwd()+'/proto/serverx.crt');
+  const root_cert = readFileSync(process.cwd()+'/proto/ca.crt');
   const ssl_creds = credentials.createSsl(root_cert)
 
   const options = {
