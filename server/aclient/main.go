@@ -26,7 +26,7 @@ func (c ClientToken) RequireTransportSecurity() bool {
 
 func main() {
 	path, _ := os.Getwd()
-	creds, _ := credentials.NewClientTLSFromFile(path+"/../aserver/keys/server/server.crt", "localhost")
+	creds, _ := credentials.NewClientTLSFromFile(path+"/../aserver/keys/server/serverx.crt", "localhost")
 	conn, err := grpc.Dial("155.138.159.68:9090", grpc.WithTransportCredentials(creds))
 
 	//conn, err := grpc.Dial("127.0.0.1:9090", grpc.WithTransportCredentials(insecure.NewCredentials()))
