@@ -5,6 +5,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import React from "react";
 
 interface Props {
@@ -36,7 +37,7 @@ export default function CusProgress({ value }: Props) {
         <Progress
             className="rounded-sm bg-slate-200 "
             value={value}
-            indicatorColor={color}
+            indicatorColor={cn(color, "transition duration-1000 delay-200")}
           />
         </TooltipTrigger>
         <TooltipContent>
