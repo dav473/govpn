@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
-import { SayHelloServiceClient } from "@/proto/hello_grpc_pb";
-import { SayHelloRequest } from "@/proto/hello_pb";
+import { ServerStatusServiceClient } from "@/proto/hello_grpc_pb";
+import { ServerStatusRequest } from "@/proto/hello_pb";
 import { credentials } from "@grpc/grpc-js";
 import { readFileSync } from "fs";
 
@@ -27,9 +27,9 @@ export async function GET(request: NextRequest) {
     'grpc.ssl_target_name_override' : 'localhost',
     'grpc.default_authority': 'localhost'
 }
-  const client = new SayHelloServiceClient("127.0.0.1:9090", ssl_creds, options);
-  const req = new SayHelloRequest();
-  const stream = client.sayHello(req);
+  const client = new ServerStatusServiceClient("127.0.0.1:9090", ssl_creds, options);
+  const req = new ServerStatusRequest();
+  const stream = client.serverStatus(req);
 
   stream.on("data", ( response) => {
     const message = `data: ${response} \n\n`;

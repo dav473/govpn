@@ -1,19 +1,37 @@
-// protoc --go_out=. hello.proto
-// protoc --go-grpc_out=. hello.proto
+//go get -u google.golang.org/protobuf/cmd/protoc-gen-go && go install google.golang.org/protobuf/cmd/protoc-gen-go && go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
-// protoc --go_out=. --go-grpc_out=. hello.proto
+
+// export PATH="$PATH:$(go env GOPATH)/bin"
+// protoc --go_out=./proto --go-grpc_out=./proto ./proto/hello.proto
+
+// npm install grpc_tools_node_protoc_ts --save-dev
+// npm install @grpc/grpc-js
+// protoc --plugin=protoc-gen-ts=../node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:. hello.proto
 syntax = "proto3";  
 // generated go files in '.' current directory with 'service' package
 option go_package = ".;service";
 
 
-
-service SayHelloService {
-    rpc SayHello(SayHelloRequest) returns (stream SayHelloResponse){};
+service ServerStatusService {
+    rpc ServerStatus(ServerStatusRequest) returns (stream ServerStatusResponse){};
 }
 
-message SayHelloRequest {}
+message ServerStatusRequest {}
 
-message SayHelloResponse {
-    string response_msg = 1;
+message ServerStatusResponse {
+    string responseUptime = 1;
+    string responseMemory = 2;
+    string responseDisk = 3;
+    string responseCpu = 4;
+    SystemLoad responseLoad = 5;
+    NetworkStatus responseNetwork = 6;
+    NetworkStatus responseCurrentNetwork = 7;
+    uint64 responsePing = 8;
+}
+message SystemLoad {
+    repeated float status = 1;
+}
+message NetworkStatus{
+    uint64 upload = 1;
+    uint64 download = 2;
 }
