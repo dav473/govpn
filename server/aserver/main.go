@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
 	"net"
 	"os"
 	"time"
@@ -42,10 +41,8 @@ func (s *Server) ServerStatus(req *pb.ServerStatusRequest, stream pb.ServerStatu
 			fmt.Println("Client disconnected")
 			return nil
 		case <-timer.C:
-			rand.Seed(time.Now().UnixNano())
-			randomFloat := rand.Float64() * 0.99
-			responseMsg := fmt.Sprintf("%.2f", randomFloat)
-			fmt.Printf("send message: %s\n", responseMsg)
+
+			fmt.Printf("send message!\n")
 			err := stream.Send(&pb.ServerStatusResponse{
 				ResponseUptime: "123",
 				ResponseMemory: "Memory Info",

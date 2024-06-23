@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 import { ServerStatusServiceClient } from "@/proto/hello_grpc_pb";
-import { ServerStatusRequest } from "@/proto/hello_pb";
+import { ServerStatusRequest, ServerStatusResponse } from "@/proto/hello_pb";
 import { credentials } from "@grpc/grpc-js";
 import { readFileSync } from "fs";
 
@@ -31,11 +31,12 @@ export async function GET(request: NextRequest) {
   const req = new ServerStatusRequest();
   const stream = client.serverStatus(req);
 
-  stream.on("data", ( response) => {
-    const message = `data: ${response} \n\n`;
+  stream.on("data", ( res: ServerStatusResponse) => {
+    const result = ServerStatusResponse.deserializeBinary(res.serializeBinary())
+    console.log(JSON.stringify(result.toObject()))
+    const message = `data: ${result} \n\n`;
     const messageUint8Array = encoder.encode(message);
-    console.log("received: "+message)
-     writer.write(messageUint8Array)
+    writer.write(messageUint8Array)
   });
 
   stream.on("close", async () => {
