@@ -8,6 +8,7 @@ export default function Home() {
   useEffect(() => {
       const eventSource = new EventSource('/api/servers/status')
       eventSource.onmessage = function (event) {
+          console.log(event.data)
           setMessage(event.data)
       }
   },[])
