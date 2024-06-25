@@ -1,7 +1,8 @@
 //go get -u google.golang.org/protobuf/cmd/protoc-gen-go && go install google.golang.org/protobuf/cmd/protoc-gen-go && go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc && go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 
-// protoc --go_out=./proto --go-grpc_out=./proto ./proto/hello.proto
 // export PATH="$PATH:$(go env GOPATH)/bin"
+// protoc --go_out=./proto --go-grpc_out=./proto ./proto/hello.proto
+
 // npm install grpc_tools_node_protoc_ts --save-dev
 // npm install @grpc/grpc-js
 // protoc --plugin=protoc-gen-ts=../node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:. hello.proto

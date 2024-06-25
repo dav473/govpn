@@ -24,31 +24,30 @@ export namespace ServerStatusRequest {
 }
 
 export class ServerStatusResponse extends jspb.Message { 
-    getResponseuptime(): string;
-    setResponseuptime(value: string): ServerStatusResponse;
-    getResponsememory(): string;
-    setResponsememory(value: string): ServerStatusResponse;
-    getResponsedisk(): string;
-    setResponsedisk(value: string): ServerStatusResponse;
-    getResponsecpu(): string;
-    setResponsecpu(value: string): ServerStatusResponse;
+    getUptime(): number;
+    setUptime(value: number): ServerStatusResponse;
+    getMemory(): number;
+    setMemory(value: number): ServerStatusResponse;
+    getDisk(): number;
+    setDisk(value: number): ServerStatusResponse;
+    getCpu(): number;
+    setCpu(value: number): ServerStatusResponse;
+    clearLoadList(): void;
+    getLoadList(): Array<number>;
+    setLoadList(value: Array<number>): ServerStatusResponse;
+    addLoad(value: number, index?: number): number;
 
-    hasResponseload(): boolean;
-    clearResponseload(): void;
-    getResponseload(): SystemLoad | undefined;
-    setResponseload(value?: SystemLoad): ServerStatusResponse;
+    hasNetwork(): boolean;
+    clearNetwork(): void;
+    getNetwork(): NetworkStatus | undefined;
+    setNetwork(value?: NetworkStatus): ServerStatusResponse;
 
-    hasResponsenetwork(): boolean;
-    clearResponsenetwork(): void;
-    getResponsenetwork(): NetworkStatus | undefined;
-    setResponsenetwork(value?: NetworkStatus): ServerStatusResponse;
-
-    hasResponsecurrentnetwork(): boolean;
-    clearResponsecurrentnetwork(): void;
-    getResponsecurrentnetwork(): NetworkStatus | undefined;
-    setResponsecurrentnetwork(value?: NetworkStatus): ServerStatusResponse;
-    getResponseping(): number;
-    setResponseping(value: number): ServerStatusResponse;
+    hasCurrentNetwork(): boolean;
+    clearCurrentNetwork(): void;
+    getCurrentNetwork(): NetworkStatus | undefined;
+    setCurrentNetwork(value?: NetworkStatus): ServerStatusResponse;
+    getPing(): number;
+    setPing(value: number): ServerStatusResponse;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ServerStatusResponse.AsObject;
@@ -62,36 +61,14 @@ export class ServerStatusResponse extends jspb.Message {
 
 export namespace ServerStatusResponse {
     export type AsObject = {
-        responseuptime: string,
-        responsememory: string,
-        responsedisk: string,
-        responsecpu: string,
-        responseload?: SystemLoad.AsObject,
-        responsenetwork?: NetworkStatus.AsObject,
-        responsecurrentnetwork?: NetworkStatus.AsObject,
-        responseping: number,
-    }
-}
-
-export class SystemLoad extends jspb.Message { 
-    clearStatusList(): void;
-    getStatusList(): Array<number>;
-    setStatusList(value: Array<number>): SystemLoad;
-    addStatus(value: number, index?: number): number;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): SystemLoad.AsObject;
-    static toObject(includeInstance: boolean, msg: SystemLoad): SystemLoad.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: SystemLoad, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): SystemLoad;
-    static deserializeBinaryFromReader(message: SystemLoad, reader: jspb.BinaryReader): SystemLoad;
-}
-
-export namespace SystemLoad {
-    export type AsObject = {
-        statusList: Array<number>,
+        uptime: number,
+        memory: number,
+        disk: number,
+        cpu: number,
+        loadList: Array<number>,
+        network?: NetworkStatus.AsObject,
+        currentNetwork?: NetworkStatus.AsObject,
+        ping: number,
     }
 }
 

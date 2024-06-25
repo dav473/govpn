@@ -44,22 +44,20 @@ func (s *Server) ServerStatus(req *pb.ServerStatusRequest, stream pb.ServerStatu
 
 			fmt.Printf("send message!\n")
 			err := stream.Send(&pb.ServerStatusResponse{
-				ResponseUptime: "123",
-				ResponseMemory: "Memory Info",
-				ResponseDisk:   "Disk Info",
-				ResponseCpu:    "Cpu Info",
-				ResponseLoad: &pb.SystemLoad{
-					Status: []float32{0.32, 0.56, 0.66},
-				},
-				ResponseNetwork: &pb.NetworkStatus{
+				Uptime: 324,
+				Memory: 11.5,
+				Disk:   64.4,
+				Cpu:    32.1,
+				Load:   []float32{0.1, 0.2, 0.3},
+				Network: &pb.NetworkStatus{
 					Upload:   123,
 					Download: 34,
 				},
-				ResponseCurrentNetwork: &pb.NetworkStatus{
+				CurrentNetwork: &pb.NetworkStatus{
 					Upload:   123,
 					Download: 34,
 				},
-				ResponsePing: 123,
+				Ping: 123,
 			})
 			if err != nil {
 				return nil

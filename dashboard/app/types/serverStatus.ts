@@ -1,17 +1,17 @@
 import { z } from "zod";
-import { LoadType, NetworkDataType } from "./type";
+import {  NetworkDataType } from "./type";
 
-export type ServerStatusProp = {
+export type ServerStatusType = {
     id:string;
     label:string;
     ip:string;
     uptime:number;
     cpu:number;
     memory:number;
-    load:LoadType;
+    loadList:number[];
     network:NetworkDataType;
     disk:string;
-    currentNetworkActivity:NetworkDataType;
+    currentNetwork:NetworkDataType;
     ping:number;
 }
 
@@ -22,13 +22,13 @@ export const ServerStatusSchema = z.object({
     uptime: z.number(),
     cpu: z.number(),
     memory: z.number(),
-    load:  z.array(z.number()).length(3),
+    loadList:  z.array(z.number()).length(3),
     network: z.object({
         upload: z.number(),
         download: z.number(),
     }),
     disk: z.string(),
-    currentNetworkActivity: z.object({
+    currentNetwork: z.object({
         upload: z.number(),
         download: z.number(),
     }),

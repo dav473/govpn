@@ -5,7 +5,7 @@ import { ServerStatusSchema } from "../../types/serverStatus";
 import { z } from "zod";
 import CusProgress from "./components/cus-progress";
 import NetworkInformationBar from "../../components/networkInformationBar";
-import { LoadType, NetworkDataType } from "../../types/type";
+import {  NetworkDataType } from "../../types/type";
 import LoadInformationBar from "./components/loadInformationBar";
 import { uptimeConverter } from "../../utils/uptimeConvetor";
 import { Button } from "@/components/ui/button";
@@ -50,10 +50,10 @@ export const columns: ColumnDef<ServerStatusSchema>[] = [
     },
   },
   {
-    accessorKey: "load",
-    header: "Load",
+    accessorKey: "loadList",
+    header: "Load Balance",
     cell: (cell) => {
-      return <LoadInformationBar value={cell.getValue() as LoadType} />
+      return <LoadInformationBar value={cell.getValue()} />
     },
   },
 
@@ -65,7 +65,7 @@ export const columns: ColumnDef<ServerStatusSchema>[] = [
     },
   },
   {
-    accessorKey: "currentNetworkActivity",
+    accessorKey: "currentNetwork",
     header: "Current Network Activity",
     cell: (cell) => {
       return <NetworkInformationBar value={cell.getValue() as NetworkDataType} type={1} />

@@ -62,7 +62,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 17236
       },
       "disk": "1TB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 5523,
         "download": 21439
       },
@@ -81,7 +81,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 28934
       },
       "disk": "2TB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 21678,
         "download": 31675
       },
@@ -100,7 +100,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 7521
       },
       "disk": "500GB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 15872,
         "download": 9145
       },
@@ -119,7 +119,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 12465
       },
       "disk": "4TB HDD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 20763,
         "download": 15784
       },
@@ -138,7 +138,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 18349
       },
       "disk": "1TB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 22749,
         "download": 32891
       },
@@ -157,7 +157,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 20673
       },
       "disk": "2TB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 18394,
         "download": 20978
       },
@@ -176,7 +176,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 3216
       },
       "disk": "1TB HDD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 19563,
         "download": 5378
       },
@@ -195,7 +195,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 26938
       },
       "disk": "2TB HDD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 26873,
         "download": 13698
       },
@@ -214,7 +214,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 13248
       },
       "disk": "500GB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 11823,
         "download": 29246
       },
@@ -233,7 +233,7 @@ export const serverStatus: ServerStatusProp[] = [
         "download": 16349
       },
       "disk": "1TB SSD",
-      "currentNetworkActivity": {
+      "current_network": {
         "upload": 15479,
         "download": 20347
       } ,
