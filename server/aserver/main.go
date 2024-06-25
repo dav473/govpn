@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"net"
 	"os"
 	"time"
@@ -42,22 +43,22 @@ func (s *Server) ServerStatus(req *pb.ServerStatusRequest, stream pb.ServerStatu
 			return nil
 		case <-timer.C:
 
-			fmt.Printf("send message!\n")
+			fmt.Printf("send message!, %v\n", rand.Int31n(100))
 			err := stream.Send(&pb.ServerStatusResponse{
-				Uptime: 324,
-				Memory: 11.5,
-				Disk:   64.4,
-				Cpu:    32.1,
-				Load:   []float32{0.1, 0.2, 0.3},
+				Uptime: rand.Uint64(),
+				Memory: rand.Float32(),
+				Disk:   rand.Float32(),
+				Cpu:    rand.Float32(),
+				Load:   []float32{rand.Float32(), rand.Float32(), rand.Float32()},
 				Network: &pb.NetworkStatus{
-					Upload:   123,
-					Download: 34,
+					Upload:   uint64(rand.Uint32()),
+					Download: uint64(rand.Uint32()),
 				},
 				CurrentNetwork: &pb.NetworkStatus{
-					Upload:   123,
-					Download: 34,
+					Upload:   uint64(rand.Uint32()),
+					Download: uint64(rand.Uint32()),
 				},
-				Ping: 123,
+				Ping: uint64(rand.Uint32()),
 			})
 			if err != nil {
 				return nil

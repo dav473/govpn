@@ -9,7 +9,7 @@ import {  NetworkDataType } from "../../types/type";
 import LoadInformationBar from "./components/loadInformationBar";
 import { uptimeConverter } from "../../utils/uptimeConvetor";
 import { Button } from "@/components/ui/button";
-import { ChevronRight, Ellipsis } from "lucide-react";
+import {  Ellipsis } from "lucide-react";
 
 type ServerStatusSchema = z.infer<typeof ServerStatusSchema>;
 
@@ -20,10 +20,11 @@ export const columns: ColumnDef<ServerStatusSchema>[] = [
   },
   {
     accessorKey: "uptime",
-    header: "Uptime",
+    header:()=> (<div className="bg-red-500">Uptime</div>),
+    size:200,
     cell:  (cell) => {
       const { days, hours } = uptimeConverter(cell.getValue() as number);
-      return ( <p>{days >0 && days +" d"} {hours} h</p>
+      return ( <div className="bg-red-300">{days >0 && days +" d"} {hours} h</div>
       )
     }
   },
