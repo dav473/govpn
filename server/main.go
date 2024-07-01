@@ -43,7 +43,7 @@ func (s *Server) ServerStatus(req *pb.ServerStatusRequest, stream pb.ServerStatu
 			return nil
 		case <-timer.C:
 
-			fmt.Printf("send message!, %v\n", rand.Int31n(100))
+			fmt.Printf("send message!!, %v\n", rand.Int31n(100))
 			err := stream.Send(&pb.ServerStatusResponse{
 				Uptime: rand.Uint64(),
 				Memory: rand.Float32(),

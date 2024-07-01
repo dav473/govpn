@@ -17,8 +17,10 @@ export async function GET(request: NextRequest) {
       "Transfer-Encoding": "chunked",
     },
   });
+  // SSE
   const writer = transformStream.writable.getWriter();
 
+  // GRPC
   const client = getGRPCClient();
   const req = new ServerStatusRequest();
   const stream = client.serverStatus(req);
