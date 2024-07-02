@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/dav473/govpn/server/aserver/proto"
+	pb "github.com/dav473/govpn/server/proto"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
