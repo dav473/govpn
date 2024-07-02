@@ -1,0 +1,69 @@
+package main
+
+import (
+	"fmt"
+	"time"
+	"encoding/json"
+	"github.com/shirou/gopsutil/v4/host"
+	"github.com/shirou/gopsutil/v4/mem"
+	"github.com/shirou/gopsutil/v4/cpu"
+	"github.com/shirou/gopsutil/v4/disk"
+	"github.com/shirou/gopsutil/v4/load"
+	"github.com/shirou/gopsutil/v4/net"
+
+)
+
+type NetworkStatus struct {
+	Upload uint64	`json:"upload"`
+	Download uint64	`json:"download"`
+}
+func formatedString(v float64) string {
+	formatted := fmt.Sprintf("%.2f", v)
+	return formatted
+}
+
+// This will automatically called when fmt.Printf("%v", networkInfo) is called
+func (v NetworkStatus) String() string {
+	s, _ := json.Marshal(v)
+	return string(s)
+}
+
+func main(){
+	//Label
+	hostInfo, _ := host.Info()
+	//Uptime
+	uptimeInfo, _ := host.Uptime()
+	//Memory
+	memInfo, _ := mem.VirtualMemory()
+	//get disk info, false only return the physical mounted devices
+	diskInfo, _ := disk.Partitions(false)
+	mainDisk,_ := disk.Usage(diskInfo[2].Device)
+	//CPU
+	cpuInfo, _ := cpu.Percent(time.Second, false)
+	//Load Average
+	loadInfo, _ := load.Avg()
+	//Network
+	var networkInfo, wireguardNetworkInfo NetworkStatus
+	netInfo, _ := net.IOCounters(true)
+	for _, info := range netInfo {
+		switch info.Name {
+		case "lo":
+			networkInfo.Upload = info.BytesSent 
+			networkInfo.Download = info.BytesRecv
+		case "eth0":
+			wireguardNetworkInfo.Upload = info.BytesSent 
+			wireguardNetworkInfo.Download = info.BytesRecv 
+		}
+	}
+
+
+	fmt.Printf("Label:					%v\n",hostInfo.Hostname)
+	fmt.Printf("Uptime:					%v (s)\n",uptimeInfo) 
+	fmt.Printf("Memory:					%v\n",formatedString(memInfo.UsedPercent)) 
+	fmt.Printf("Disk:					%v\n", mainDisk.UsedPercent)
+	fmt.Printf("CPU:					%v\n",formatedString(cpuInfo[0]))
+	fmt.Printf("Load:					%v\n",loadInfo)
+	fmt.Printf("Network:				%v\n", networkInfo)
+	fmt.Printf("Wireguard: 				%v\n", wireguardNetworkInfo)
+
+}
