@@ -19,10 +19,14 @@ export default function NetworkInformationBar({
   }
   return (
     <div className="flex items-center flex-row">
-      <SquareArrowUp size={18} className={cn("mr-1",filledColor)}  /> 
-      <p className="basis-1/2">{upload} GB {filledColor && "/s"}</p>
-      <SquareArrowDown size={18} className={cn("mr-1",filledColor)}  />
-      <p className="basis-1/2">{download} GB {filledColor && "/s"}</p>
+      <SquareArrowUp size={18} className={cn("mr-1", filledColor)} />
+      <p className="basis-1/2">
+        {upload} {filledColor && "/s"}
+      </p>
+      <SquareArrowDown size={18} className={cn("mr-1", filledColor)} />
+      <p className="basis-1/2">
+        {download} {filledColor && "/s"}
+      </p>
     </div>
   );
 }

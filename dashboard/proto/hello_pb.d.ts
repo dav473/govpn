@@ -73,10 +73,10 @@ export namespace ServerStatusResponse {
 }
 
 export class NetworkStatus extends jspb.Message { 
-    getUpload(): number;
-    setUpload(value: number): NetworkStatus;
-    getDownload(): number;
-    setDownload(value: number): NetworkStatus;
+    getUpload(): string;
+    setUpload(value: string): NetworkStatus;
+    getDownload(): string;
+    setDownload(value: string): NetworkStatus;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): NetworkStatus.AsObject;
@@ -90,7 +90,7 @@ export class NetworkStatus extends jspb.Message {
 
 export namespace NetworkStatus {
     export type AsObject = {
-        upload: number,
-        download: number,
+        upload: string,
+        download: string,
     }
 }

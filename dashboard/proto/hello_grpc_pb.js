@@ -9,6 +9,7 @@
 // npm install grpc_tools_node_protoc_ts --save-dev
 // npm install @grpc/grpc-js
 // protoc --plugin=protoc-gen-ts=../node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:. hello.proto
+// npx buf generate
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var hello_pb = require('./hello_pb.js');

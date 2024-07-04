@@ -12,7 +12,6 @@ interface Props {
   value: number;
 }
 export default function CusProgress({ value }: Props) {
-  value *= 100;
   let color = "red";
 
   switch (true) {
@@ -30,11 +29,10 @@ export default function CusProgress({ value }: Props) {
       break;
   }
   return (
-    
-        <TooltipProvider>
+    <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-        <Progress
+          <Progress
             className="rounded-sm bg-slate-200 "
             value={value}
             indicatorColor={cn(color, "transition duration-1000 delay-200")}

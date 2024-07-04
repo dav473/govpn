@@ -1,4 +1,4 @@
 export type NetworkDataType = {
-    upload: number,
-    download: number
-}
+  upload: string;
+  download: string;
+};

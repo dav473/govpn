@@ -270,19 +270,19 @@ proto.ServerStatusResponse.deserializeBinaryFromReader = function(msg, reader) {
       msg.setUptime(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setMemory(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setDisk(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = /** @type {number} */ (reader.readDouble());
       msg.setCpu(value);
       break;
     case 5:
-      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedFloat() : [reader.readFloat()]);
+      var values = /** @type {!Array<number>} */ (reader.isDelimited() ? reader.readPackedDouble() : [reader.readDouble()]);
       for (var i = 0; i < values.length; i++) {
         msg.addLoad(values[i]);
       }
@@ -339,28 +339,28 @@ proto.ServerStatusResponse.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getMemory();
   if (f !== 0.0) {
-    writer.writeFloat(
+    writer.writeDouble(
       2,
       f
     );
   }
   f = message.getDisk();
   if (f !== 0.0) {
-    writer.writeFloat(
+    writer.writeDouble(
       3,
       f
     );
   }
   f = message.getCpu();
   if (f !== 0.0) {
-    writer.writeFloat(
+    writer.writeDouble(
       4,
       f
     );
   }
   f = message.getLoadList();
   if (f.length > 0) {
-    writer.writePackedFloat(
+    writer.writePackedDouble(
       5,
       f
     );
@@ -410,7 +410,7 @@ proto.ServerStatusResponse.prototype.setUptime = function(value) {
 
 
 /**
- * optional float memory = 2;
+ * optional double memory = 2;
  * @return {number}
  */
 proto.ServerStatusResponse.prototype.getMemory = function() {
@@ -428,7 +428,7 @@ proto.ServerStatusResponse.prototype.setMemory = function(value) {
 
 
 /**
- * optional float disk = 3;
+ * optional double disk = 3;
  * @return {number}
  */
 proto.ServerStatusResponse.prototype.getDisk = function() {
@@ -446,7 +446,7 @@ proto.ServerStatusResponse.prototype.setDisk = function(value) {
 
 
 /**
- * optional float cpu = 4;
+ * optional double cpu = 4;
  * @return {number}
  */
 proto.ServerStatusResponse.prototype.getCpu = function() {
@@ -464,7 +464,7 @@ proto.ServerStatusResponse.prototype.setCpu = function(value) {
 
 
 /**
- * repeated float load = 5;
+ * repeated double load = 5;
  * @return {!Array<number>}
  */
 proto.ServerStatusResponse.prototype.getLoadList = function() {
@@ -624,8 +624,8 @@ proto.NetworkStatus.prototype.toObject = function(opt_includeInstance) {
  */
 proto.NetworkStatus.toObject = function(includeInstance, msg) {
   var f, obj = {
-    upload: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    download: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    upload: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    download: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -663,11 +663,11 @@ proto.NetworkStatus.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setUpload(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readUint64());
+      var value = /** @type {string} */ (reader.readString());
       msg.setDownload(value);
       break;
     default:
@@ -700,15 +700,15 @@ proto.NetworkStatus.prototype.serializeBinary = function() {
 proto.NetworkStatus.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUpload();
-  if (f !== 0) {
-    writer.writeUint64(
+  if (f.length > 0) {
+    writer.writeString(
       1,
       f
     );
   }
   f = message.getDownload();
-  if (f !== 0) {
-    writer.writeUint64(
+  if (f.length > 0) {
+    writer.writeString(
       2,
       f
     );
@@ -717,38 +717,38 @@ proto.NetworkStatus.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint64 upload = 1;
- * @return {number}
+ * optional string upload = 1;
+ * @return {string}
  */
 proto.NetworkStatus.prototype.getUpload = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.NetworkStatus} returns this
  */
 proto.NetworkStatus.prototype.setUpload = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * optional uint64 download = 2;
- * @return {number}
+ * optional string download = 2;
+ * @return {string}
  */
 proto.NetworkStatus.prototype.getDownload = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {number} value
+ * @param {string} value
  * @return {!proto.NetworkStatus} returns this
  */
 proto.NetworkStatus.prototype.setDownload = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

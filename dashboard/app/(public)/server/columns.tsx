@@ -52,7 +52,9 @@ export const columns: ColumnDef<ServerStatusSchema>[] = [
   },
   {
     accessorKey: "loadList",
-    header: "Load Balance",
+    header: () => {
+      return <div className="text-center">Load Average</div>;
+    },
     cell: (cell) => {
       return <LoadInformationBar value={cell.getValue() as number[]} />;
     },

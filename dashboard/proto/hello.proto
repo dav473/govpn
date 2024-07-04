@@ -7,6 +7,7 @@
 // npm install grpc_tools_node_protoc_ts --save-dev
 // npm install @grpc/grpc-js
 // protoc --plugin=protoc-gen-ts=../node_modules/.bin/protoc-gen-ts --ts_out=grpc_js:. hello.proto
+// npx buf generate
 syntax = "proto3";  
 // generated go files in '.' current directory with 'service' package
 option go_package = ".;service";
@@ -20,15 +21,15 @@ message ServerStatusRequest {}
 
 message ServerStatusResponse {
     uint64 uptime = 1;
-    float memory = 2;
-    float disk = 3;
-    float cpu = 4;
-    repeated float load = 5;
+    double memory = 2;
+    double disk = 3;
+    double cpu = 4;
+    repeated double load = 5;
     NetworkStatus network = 6;
     NetworkStatus current_network = 7;
     uint64 ping = 8;
 }
 message NetworkStatus{
-    uint64 upload = 1;
-    uint64 download = 2;
+    string upload = 1;
+    string download = 2;
 }
