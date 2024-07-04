@@ -7,6 +7,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/dav473/govpn/server/internal/serverstatus"
 	pb "github.com/dav473/govpn/server/proto"
 
 	"google.golang.org/grpc"
@@ -44,9 +45,10 @@ func (s *Server) ServerStatus(req *pb.ServerStatusRequest, stream pb.ServerStatu
 		case <-timer.C:
 
 			fmt.Printf("send message!!, %v\n", rand.Int31n(100))
+			serverStatus := serverstatus.GetServerStatus()
 			err := stream.Send(&pb.ServerStatusResponse{
-				Uptime: rand.Uint64(),
-				Memory: rand.Float32(),
+				Uptime: serverStatus.Uptime,
+				Memory: serverStatus.Memory,
 				Disk:   rand.Float32(),
 				Cpu:    rand.Float32(),
 				Load:   []float32{rand.Float32(), rand.Float32(), rand.Float32()},

@@ -20,7 +20,7 @@ message ServerStatusRequest {}
 
 message ServerStatusResponse {
     uint64 uptime = 1;
-    float memory = 2;
+    double memory = 2;
     float disk = 3;
     float cpu = 4;
     repeated float load = 5;

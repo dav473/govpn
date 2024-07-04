@@ -20,35 +20,32 @@ export const columns: ColumnDef<ServerStatusSchema>[] = [
   },
   {
     accessorKey: "uptime",
-    header: () => <div className="bg-red-500">Uptime</div>,
-    size: 200,
-    cell: (cell) => {
-      const { days, hours } = uptimeConverter(cell.getValue() as number);
-      return (
-        <div className="bg-red-300">
-          {days > 0 && days + " d"} {hours} h
-        </div>
-      );
-    },
+    header: "Uptime",
   },
 
   {
     accessorKey: "memory",
-    header: "Memory",
+    header: () => {
+      return <div className="text-center">Memory</div>;
+    },
     cell: (cell) => {
       return <CusProgress value={cell.getValue() as number} />;
     },
   },
   {
     accessorKey: "disk",
-    header: "Disk",
+    header: () => {
+      return <div className="text-center">Disk</div>;
+    },
     cell: (cell) => {
       return <CusProgress value={cell.getValue() as number} />;
     },
   },
   {
     accessorKey: "cpu",
-    header: "CPU",
+    header: () => {
+      return <div className="text-center">CPU</div>;
+    },
     cell: (cell) => {
       return <CusProgress value={cell.getValue() as number} />;
     },
